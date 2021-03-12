@@ -2,9 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap');
-
 :root {
   --yellow: #ffa935;
   --bright-yellow: #FDFE01;
@@ -36,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Helvetica', sans-serif;
+    font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 700;
   }
 `;
