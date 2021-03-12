@@ -12,6 +12,7 @@ const Login = () => {
         <img src={Bee} alt="Logo" />
         <h1>Login</h1>
       </div>
+      <h3>Área restrita</h3>
       <LoginForm />
 
       <div id="bottom-half">

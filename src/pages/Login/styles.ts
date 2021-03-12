@@ -1,20 +1,26 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 30rem;
+  width: 25rem;
   height: 30rem;
   border-radius: 2rem;
   border: 1px solid rgba(0,0,0, 0.1);
   box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.1);
   background: #F2ECFC;
-  padding: 5rem 3rem;
+  padding: 0 3rem 0 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   justify-items: center;
+  align-items: center;
+  text-align: center;
+
+  h3 {
+    margin-bottom: 1rem;
+  }
 
   #top-half {
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -40,7 +46,7 @@ export const Container = styled.div`
     margin-top: 2rem;
 
     img {
-      width: 25%;
+      width: 50%;
     }
   }
 `;

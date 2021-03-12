@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
+import { toast, Toaster } from 'react-hot-toast';
 import * as UserActions from '../../store/ducks/users/actions';
 import { Container } from './styles';
 
@@ -9,12 +10,23 @@ const LoginForm = () => {
   const [authorized, setAuthorized] = useState(false);
 
   const { register, handleSubmit, errors } = useForm();
+
   const dispatch = useDispatch();
 
+  const { error } = useSelector((state: any) => state.users)
+
   const onSubmit = async (data: any) => {
+    const token = localStorage.getItem("token")
     try {
       dispatch(UserActions.loginRequest(data));
-      setAuthorized(true);
+      if (error) {
+        toast.error('Login/senha incorretos')
+      }
+      if (token) {
+        setAuthorized(true);
+      } else {
+        toast.error('Login/senha incorretos')
+      }
     } catch (e) {
       console.log(e)
     }
@@ -51,6 +63,7 @@ const LoginForm = () => {
         }
         <button type="submit">Login</button>
       </form>
+      <Toaster />
       { authorized && <Redirect to="/dashboard" />}
     </Container>
   );

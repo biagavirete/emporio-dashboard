@@ -36,6 +36,7 @@ export const Container = styled.div`
       :hover {
         cursor: pointer;
         background: #FEFF65;
+        box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.1);
       }
     }
 
