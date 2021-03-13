@@ -4,33 +4,24 @@ import * as UserActions from '../../store/ducks/users/actions';
 import { Data } from '../../store/ducks/users/types';
 import { useForm } from 'react-hook-form';
 import { toast, Toaster } from 'react-hot-toast';
-import api from '../../services/api';
+import * as UsersService from '../../store/ducks/users/actions';
 import { Redirect } from 'react-router';
 import { MainContainer } from '../Dashboard/styles';
 import Sidebar from '../../components/Sidebar';
 import UserInfo from '../../components/UserInfo';
+import { Form } from './styles';
 
 const Users = () => {
   const { register, handleSubmit, errors } = useForm();
   const token = localStorage.getItem("token")
   const dispatch = useDispatch();
 
-  const getUsers = async () => {
-    try {
-      await api.get('/users')
-        .then(response => dispatch(UserActions.loadUsers(response.data)))
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
-  const { usersList } = useSelector((state: any) => state.users);
-
   useEffect(() => {
-    getUsers()
+    dispatch(UsersService.loadUsersRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const { usersList, formSubmitted } = useSelector((state: any) => state.users);
 
   const onSubmit = async (data: any) => {
     try {
@@ -40,6 +31,11 @@ const Users = () => {
     }
     toast.success('Cadastro realizado')
   }
+
+  useEffect(() => {
+    dispatch(UsersService.loadUsersRequest());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formSubmitted])
 
   return (
     <MainContainer>
@@ -62,58 +58,47 @@ const Users = () => {
             ))}
 
             <h1>Novo usuário</h1>
-
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <label>
-                Nome
-<input
-                  type="text"
-                  placeholder="Digite o nome"
-                  name="name"
-                  ref={register({
-                    required: 'Campo obrigatório',
-                  })} />
-              </label>
+            <Form>
+              <input
+                type="text"
+                placeholder="Digite o nome"
+                name="name"
+                ref={register({
+                  required: 'Campo obrigatório',
+                })} />
               {errors.name && <p
                 role="alert"
                 data-testid="email-error">{errors.name.message}</p>
               }
-              <label>
-                E-mail
-<input
-                  type="email"
-                  placeholder="Digite o e-mail"
-                  name="email"
-                  ref={register({
-                    required: 'Campo obrigatório',
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "E-mail inválido"
-                    }
-                  })} />
-              </label>
+              <input
+                type="email"
+                placeholder="Digite o e-mail"
+                name="email"
+                ref={register({
+                  required: 'Campo obrigatório',
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "E-mail inválido"
+                  }
+                })} />
               {errors.email && <p
                 role="alert"
                 data-testid="email-error">{errors.email.message}</p>
               }
 
-              <label>
-                Senha
-<input
-                  type="password"
-                  placeholder="Digite a senha"
-                  name="password"
-                  ref={register({
-                    required: 'Campo obrigatório',
-                    minLength: 6
-                  })} />
-              </label>
+              <input
+                type="password"
+                placeholder="Digite a senha"
+                name="password"
+                ref={register({
+                  required: 'Campo obrigatório',
+                  minLength: 6
+                })} />
+
               {errors.password && <p
                 role="alert"
                 data-testid="password-error">{errors.password.message}</p>
               }
-
-              <label>Tipo</label>
 
               <label>
                 <input
@@ -133,8 +118,8 @@ const Users = () => {
         Editor
     </label>
               <Toaster />
-              <button type="submit">Cadastrar</button>
-            </form>
+              <button onClick={handleSubmit(onSubmit)}>Cadastrar</button>
+            </Form>
           </>
         ) : <Redirect to="/" />}
       </div>
