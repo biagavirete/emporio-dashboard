@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { IoPersonSharp, IoBeerSharp, IoLogOutSharp } from 'react-icons/io5'
+import { IoPersonSharp, IoBeerSharp, IoLogOutSharp, IoHome } from 'react-icons/io5'
 import { Aside } from './styles';
 import Bee from '../../assets/bee.png';
 import { useSelector } from 'react-redux';
@@ -24,6 +24,7 @@ const Sidebar = () => {
               <h2>BEES - Área Administrativa</h2>
             </div>
             <div className="links">
+              <Link to="/dashboard"><IoHome /> Home</Link>
               <Link to="/users"><IoPersonSharp /> Usuários</Link>
               <Link to="/products"><IoBeerSharp /> Produtos</Link>
             </div>
@@ -40,6 +41,7 @@ const Sidebar = () => {
               <h2>BEES - Área Administrativa</h2>
             </div>
             <div className="links">
+              <Link to="/dashboard"><IoHome /> Home</Link>
               <Link to="/products"><IoBeerSharp /> Produtos</Link>
             </div>
           </div>
