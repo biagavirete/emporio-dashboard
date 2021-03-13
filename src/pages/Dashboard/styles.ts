@@ -13,6 +13,6 @@ export const MainContainer = styled.div`
   "sidenav content userinfo";
 
   .content-area {
-    overflow: scroll;
+    overflow: auto;
   }
 `;
