@@ -8,11 +8,13 @@ import Sidebar from '../../components/Sidebar';
 import UserInfo from '../../components/UserInfo';
 import { IoTrashOutline } from 'react-icons/io5';
 import NewUserForm from '../../components/NewUserForm';
+import { NewUserButton, Table } from './styles';
 
 const Users = () => {
   const [showAddNewUser, setShowAddNewUser] = useState(false);
-  const token = localStorage.getItem("token")
   const dispatch = useDispatch();
+
+  const { role } = useSelector((state: any) => state.users.data)
 
   useEffect(() => {
     dispatch(UsersService.loadUsersRequest());
@@ -31,7 +33,7 @@ const Users = () => {
     } catch (e) {
       console.log(e)
     }
-    // dispatch(UsersService.loadUsersRequest())
+    dispatch(UsersService.loadUsersRequest())
   }
 
   useEffect(() => {
@@ -43,12 +45,18 @@ const Users = () => {
     <MainContainer>
       <Sidebar />
       <div className="content-area">
-        {token ? (
+        {role === 'admin' ? (
           <>
             <h1>Usuários</h1>
 
             <div className="table-users">
-              <table>
+              <Table>
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Permissão</th>
+                  </tr>
+                </thead>
                 <tbody>
                   {usersList !== undefined && usersList.map((item: Data) => (
                     <>
@@ -60,14 +68,14 @@ const Users = () => {
                     </>
                   ))}
                 </tbody>
-              </table>
+              </Table>
             </div>
             <div className="new-user">
-              <button onClick={toggleAddNewUser}>Adicionar novo produto</button>
+              <NewUserButton onClick={toggleAddNewUser}>Adicionar novo usuário</NewUserButton>
 
               {showAddNewUser && (
                 <>
-                  <h1>Novo usuário</h1>
+                  <h3>Novo usuário</h3>
                   <NewUserForm />
                 </>
               )}
