@@ -1,43 +1,58 @@
 import styled from 'styled-components';
 
-export const NewProductForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+export const Table = styled.table`
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  width: 100%;
+  box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.1);
 
-  input {
-      margin-top: 0.5rem;
-      height: 3rem;
-      width: 20rem;
-      padding: 0 1rem;
-      border: 1px solid var(--light-grey);
-      border-radius: 0.8rem;
-    }
+  th {
+    padding: 1rem 1rem;
+    font-size: 1.2rem;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-align: left;
+    table-layout: fixed;
+}
 
-    button {
-      height: 3.1rem;
-      width: 15rem;
-      margin-top: 1rem;
-      background: var(--bright-yellow);
-      border-radius: 0.8rem;
-      color: #000000;
-      font-size: 1.2rem;
-      font-weight: bold;
-      transition: all 0.2s;
+  tbody {
+    table-layout: fixed;
 
-      :hover {
-        cursor: pointer;
-        background: #FEFF65;
-        box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.1);
+    tr {
+      border-bottom: 1px solid #dddddd;
+
+      td {
+        padding: 1rem 1rem;
+
+        button {
+          background: transparent;
+          
+          :hover {
+            cursor: pointer;
+          }
+        }
       }
     }
+  }
+`;
 
-    p {
-      font-size: 0.7rem;
-      color: var(--orange);
-      font-weight: bold;
-      padding: 0.3rem;
-    }
+export const NewProductButton = styled.button`
+  height: 3rem;
+  width: 12rem;
+  margin-top: 1rem;
+  background: var(--bright-yellow);
+  border-radius: 0.8rem;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.2s;
+  margin-bottom: 1rem;
+
+    :hover {
+      cursor: pointer;
+      background: #FEFF65;
+      box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.1);
+      }
 `;

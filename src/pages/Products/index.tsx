@@ -7,6 +7,7 @@ import UserInfo from '../../components/UserInfo';
 import * as ProductsService from '../../store/ducks/products/actions';
 import { Product } from '../../store/ducks/products/types';
 import { MainContainer } from '../Dashboard/styles';
+import { Table, NewProductButton } from '../Products/styles';
 
 const Products = () => {
   const [showAddNewProduct, setShowAddNewProduct] = useState(false);
@@ -45,44 +46,67 @@ const Products = () => {
       <Sidebar />
       <div className="content-area">
         <h1>Produtos disponíveis</h1>
+        <div className="new-product">
+          <NewProductButton onClick={toggleAddNewProduct}>
+            Adicionar novo produto
+            </NewProductButton>
+          {showAddNewProduct && (
+            <>
+              <h3>Novo produto</h3>
+              <NewProductForm />
+            </>
+          )
+          }
+        </div>
         <div className="table">
           {role === 'admin' ? (
             <>
-              <table>
+              <Table>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Preço</th>
+                  </tr>
+                </thead>
                 <tbody>
                   {products !== undefined && products.map((row: Product) => (
                     <>
                       <tr>
                         <td>{row.title}</td>
                         <td>{row.price}</td>
-                        <td><button onClick={() => deleteProduct(row.id)}><IoTrashOutline size={20} /></button></td>
+                        <td><button onClick={() => deleteProduct(row.id)}>
+                          <IoTrashOutline size={20} />
+                        </button></td>
                       </tr>
                     </>
                   ))}
                 </tbody>
-              </table>
+              </Table>
             </>
           ) : (
             <>
-              <table>
-                {products !== undefined && products.map((row: Product) => (
-                  <>
-                    <tr>
-                      <td>{row.title}</td>
-                      <td>{row.price}</td>
-                    </tr>
-                  </>
-                ))}
-              </table>
+              <Table>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Preço</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {products !== undefined && products.map((row: Product) => (
+                    <>
+                      <tr>
+                        <td>{row.title}</td>
+                        <td>{row.price}</td>
+                      </tr>
+                    </>
+                  ))}
+                </tbody>
+              </Table>
             </>
           )}
         </div>
-        <div className="new-product">
-          <button onClick={toggleAddNewProduct}>Adicionar novo produto</button>
 
-          {showAddNewProduct && <NewProductForm />}
-
-        </div>
       </div>
       <UserInfo />
     </MainContainer>

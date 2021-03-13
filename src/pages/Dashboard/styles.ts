@@ -11,6 +11,29 @@ export const MainContainer = styled.div`
   grid-template-areas:
   "sidenav content userinfo";
 
+  .table-users {
+    display: flex;
+    justify-content: center;
+  }
+
+  .new-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  .new-product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+  }
+
   .content-area {
     display: flex;
     flex-direction: column;
