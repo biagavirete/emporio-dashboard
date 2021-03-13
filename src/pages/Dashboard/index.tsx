@@ -1,26 +1,19 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import * as UsersService from '../../store/ducks/users/actions';
 import * as ProductsService from '../../store/ducks/products/actions';
 import Sidebar from '../../components/Sidebar';
 import UserInfo from '../../components/UserInfo';
-import { MainContainer } from './styles';
+import { MainContainer, SquareDiv } from './styles';
+import EmporioLogo from '../../assets/svgs/LogoEmporio';
 
 const Dashboard = () => {
 
-  const [adminAuth, setAdminAuth] = useState(false);
-  const { name, role } = useSelector((state: any) => state.users.data)
+  const { name } = useSelector((state: any) => state.users.data)
   const token = localStorage.getItem("token")
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (role === 'admin') {
-      setAdminAuth(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   useEffect(() => {
     dispatch(UsersService.loadUsersRequest());
@@ -43,15 +36,20 @@ const Dashboard = () => {
           <MainContainer>
             <Sidebar />
             <div className="content-area">
-              <h1>Dashboard</h1>
-              <p>Bem-vindo(a), {name}</p>
-              {adminAuth ? <p>Pode ver tudo</p> : <p>Não vê users</p>}
-              <Link to="/users">Clique para ver os usuários</Link>
-              <div className="user-quantity">
-                <strong>{usersList.length}</strong>
-              </div>
-              <div className="products-quantity">
-                <strong>{products.length}</strong>
+              <h1>Bem-vindo(a), {name}!</h1>
+              <p>Confira abaixo os dados referentes ao site:</p>
+              <div className="data-area">
+                <EmporioLogo />
+                <div className="data">
+                  <SquareDiv>
+                    <p>{usersList.length}</p>
+                    <strong>usuários cadastrados</strong>
+                  </SquareDiv>
+                  <SquareDiv>
+                    <p>{products.length}</p>
+                    <strong>produtos cadastrados</strong>
+                  </SquareDiv>
+                </div>
               </div>
             </div>
             <UserInfo />
