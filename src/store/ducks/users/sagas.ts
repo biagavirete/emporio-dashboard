@@ -10,7 +10,9 @@ import {
   signUpFailure,
   signUpSuccess,
   loadUsersSuccess,
-  loadUsersFailure
+  loadUsersFailure,
+  deleteUserSuccess,
+  deleteUserFailure
 } from './actions';
 import { Data } from './types';
 
@@ -47,5 +49,15 @@ export function* getUsers() {
   } catch (err) {
     console.log(err)
     yield put(loadUsersFailure())
+  }
+}
+
+export function* deleteUser(action: any) {
+  try {
+    yield call(UserService.deleteUser, action.payload);
+    yield put(deleteUserSuccess())
+  } catch (err) {
+    console.log(err)
+    yield put(deleteUserFailure())
   }
 }

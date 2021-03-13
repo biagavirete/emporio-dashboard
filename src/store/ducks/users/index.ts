@@ -51,6 +51,18 @@ const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
     case UserTypes.GET_USERSLIST_FAILURE:
       return { ...state, loading: false, error: true }
 
+    case UserTypes.DELETE_USER_REQUEST:
+      return { ...state, loading: true }
+    case UserTypes.DELETE_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        error: false,
+      }
+    case UserTypes.DELETE_USER_FAILURE:
+      return { ...state, loading: false, error: true }
+
     default:
       return state
   }

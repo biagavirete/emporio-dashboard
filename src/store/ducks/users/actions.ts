@@ -12,3 +12,7 @@ export const loadUsersFailure = () => action(UserTypes.GET_USERSLIST_FAILURE);
 export const signUpRequest = (signUpData: any) => action(UserTypes.POST_SIGNUP_REQUEST, signUpData);
 export const signUpSuccess = (data: any) => action(UserTypes.POST_SIGNUP_SUCCESS, data);
 export const signUpFailure = () => action(UserTypes.POST_SIGNUP_FAILURE);
+
+export const deleteUserRequest = (id: any) => action(UserTypes.DELETE_USER_REQUEST, id);
+export const deleteUserSuccess = () => action(UserTypes.DELETE_USER_SUCCESS);
+export const deleteUserFailure = () => action(UserTypes.DELETE_USER_FAILURE);

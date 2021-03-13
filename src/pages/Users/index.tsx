@@ -1,18 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as UserActions from '../../store/ducks/users/actions';
 import { Data } from '../../store/ducks/users/types';
-import { useForm } from 'react-hook-form';
-import { toast, Toaster } from 'react-hot-toast';
 import * as UsersService from '../../store/ducks/users/actions';
 import { Redirect } from 'react-router';
 import { MainContainer } from '../Dashboard/styles';
 import Sidebar from '../../components/Sidebar';
 import UserInfo from '../../components/UserInfo';
-import { Form } from './styles';
+import { IoTrashOutline } from 'react-icons/io5';
+import NewUserForm from '../../components/NewUserForm';
 
 const Users = () => {
-  const { register, handleSubmit, errors } = useForm();
+  const [showAddNewUser, setShowAddNewUser] = useState(false);
   const token = localStorage.getItem("token")
   const dispatch = useDispatch();
 
@@ -23,13 +21,17 @@ const Users = () => {
 
   const { usersList, formSubmitted } = useSelector((state: any) => state.users);
 
-  const onSubmit = async (data: any) => {
+  const toggleAddNewUser = () => {
+    setShowAddNewUser(!showAddNewUser);
+  }
+
+  const deleteUser = (id: any) => {
     try {
-      dispatch(UserActions.signUpRequest(data));
+      dispatch(UsersService.deleteUserRequest(id))
     } catch (e) {
       console.log(e)
     }
-    toast.success('Cadastro realizado')
+    // dispatch(UsersService.loadUsersRequest())
   }
 
   useEffect(() => {
@@ -45,81 +47,31 @@ const Users = () => {
           <>
             <h1>Usuários</h1>
 
-            <button>Cadastrar novo usuário</button>
+            <div className="table-users">
+              <table>
+                <tbody>
+                  {usersList !== undefined && usersList.map((item: Data) => (
+                    <>
+                      <tr>
+                        <td>{item.name}</td>
+                        <td>{item.role}</td>
+                        <td><button onClick={() => deleteUser(item.id)}><IoTrashOutline size={20} /></button></td>
+                      </tr>
+                    </>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="new-user">
+              <button onClick={toggleAddNewUser}>Adicionar novo produto</button>
 
-            {usersList !== undefined && usersList.map((item: Data) => (
-              <ul>
-                <li>
-                  <p>Nome:</p>{item.name}
-                  <p>Permissão:</p>{item.role}
-
-                </li>
-              </ul>
-            ))}
-
-            <h1>Novo usuário</h1>
-            <Form>
-              <input
-                type="text"
-                placeholder="Digite o nome"
-                name="name"
-                ref={register({
-                  required: 'Campo obrigatório',
-                })} />
-              {errors.name && <p
-                role="alert"
-                data-testid="email-error">{errors.name.message}</p>
-              }
-              <input
-                type="email"
-                placeholder="Digite o e-mail"
-                name="email"
-                ref={register({
-                  required: 'Campo obrigatório',
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "E-mail inválido"
-                  }
-                })} />
-              {errors.email && <p
-                role="alert"
-                data-testid="email-error">{errors.email.message}</p>
-              }
-
-              <input
-                type="password"
-                placeholder="Digite a senha"
-                name="password"
-                ref={register({
-                  required: 'Campo obrigatório',
-                  minLength: 6
-                })} />
-
-              {errors.password && <p
-                role="alert"
-                data-testid="password-error">{errors.password.message}</p>
-              }
-
-              <label>
-                <input
-                  type="radio"
-                  name="role"
-                  value="admin"
-                  ref={register({ required: true })} />
-        Administrador
-    </label>
-
-              <label>
-                <input
-                  type="radio"
-                  name="married"
-                  value="editor"
-                  ref={register({ required: true })} />
-        Editor
-    </label>
-              <Toaster />
-              <button onClick={handleSubmit(onSubmit)}>Cadastrar</button>
-            </Form>
+              {showAddNewUser && (
+                <>
+                  <h1>Novo usuário</h1>
+                  <NewUserForm />
+                </>
+              )}
+            </div>
           </>
         ) : <Redirect to="/" />}
       </div>
