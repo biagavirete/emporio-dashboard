@@ -20,9 +20,10 @@ export interface Product {
   id: string;
 }
 
-export interface FinanceState {
+export interface ProductState {
   products: Product[],
   readonly loading: boolean;
   readonly error: boolean;
   readonly success: boolean;
+  readonly submittedForm: boolean;
 }

@@ -1,14 +1,15 @@
 import { Reducer } from "redux";
-import { ProductTypes } from './types';
+import { ProductTypes, ProductState } from './types';
 
 const INITIAL_STATE: any = {
   products: [],
   loading: false,
   error: false,
   success: false,
+  submittedForm: false
 }
 
-const reducer: Reducer<any> = (state = INITIAL_STATE, action) => {
+const reducer: Reducer<ProductState> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ProductTypes.GET_PRODUCTS_REQUEST:
       return { ...state, loading: true }
@@ -20,7 +21,7 @@ const reducer: Reducer<any> = (state = INITIAL_STATE, action) => {
         error: false,
       }
     case ProductTypes.GET_PRODUCTS_FAILURE:
-      return { ...state, loading: false, error: false }
+      return { ...state, loading: false, error: true }
 
     case ProductTypes.POST_PRODUCT_REQUEST:
       return { ...state, loading: true }
@@ -30,6 +31,7 @@ const reducer: Reducer<any> = (state = INITIAL_STATE, action) => {
         loading: false,
         success: true,
         error: false,
+        submittedForm: true,
         data: action.payload
       }
     case ProductTypes.POST_PRODUCT_FAILURE:
