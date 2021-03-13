@@ -24,7 +24,7 @@ const Products = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const { products } = useSelector((state: any) => state.products)
+  const { submittedForm, products } = useSelector((state: any) => state.products)
 
   const deleteProduct = (id: any) => {
     try {
@@ -38,7 +38,7 @@ const Products = () => {
   useEffect(() => {
     dispatch(ProductsService.getProductsRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [products])
+  }, [submittedForm])
 
   return (
     <MainContainer>
