@@ -6,13 +6,37 @@ export const UserInformation = styled.div`
   justify-content: flex-start;
   align-items: center;
   align-content: center;
-  border-left: 2px solid #000000;
+  padding: 3rem 0 3rem 0;
+  border-left: 2px solid #F8F8FA;
 
   img {
-    width: 7rem;
-    height: 7rem;
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
+    border: 2px solid #000000;
     margin: 2rem 0 2rem 0;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  @media(max-width: 1234px) {
+    img {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+
+  @media(max-width: 1152px) {
+    p {
+      display: none;
+    }
   }
 
 `;
@@ -26,5 +50,7 @@ export const Badge = styled.div`
 
   strong {
     color: #ffffff;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
   }
 `;

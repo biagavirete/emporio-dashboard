@@ -1,7 +1,7 @@
 import React from 'react';
 import { Badge, UserInformation } from './styles';
-import ManAvatar from '../../assets/man-avatar.jpg';
-import WomanAvatar from '../../assets/woman-avatar.jpg';
+import AdminAvatar from '../../assets/admin.png';
+import EditorAvatar from '../../assets/user.png';
 import { useSelector } from 'react-redux';
 
 
@@ -12,9 +12,9 @@ const UserInfo = () => {
   return (
     <UserInformation>
       { role === 'admin' ? (
-        <img src={WomanAvatar} alt="Avatar" />
+        <img src={AdminAvatar} alt="Avatar" />
       ) : (
-        <img src={ManAvatar} alt="Avatar" />
+        <img src={EditorAvatar} alt="Avatar" />
       )}
       <h2>{name}</h2>
       <p>{email}</p>
