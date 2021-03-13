@@ -17,13 +17,13 @@ export const Form = styled.form`
     }
 
     button {
-      height: 3.1rem;
-      width: 15rem;
+      height: 2rem;
+      width: 12rem;
       margin-top: 1rem;
       background: var(--bright-yellow);
       border-radius: 0.8rem;
       color: #000000;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: bold;
       transition: all 0.2s;
 
