@@ -3,9 +3,13 @@ export enum UserTypes {
   POST_LOGIN_SUCCESS = '@users/POST_LOGIN_SUCCESS',
   POST_LOGIN_FAILURE = '@users/POST_LOGIN_FAILURE',
 
-  GET_USERDATA_REQUEST = '@users/GET_USERDATA_REQUEST',
-  GET_USERDATA_SUCCESS = '@users/GET_USERDATA_REQUEST',
-  GET_USERDATA_FAILURE = '@users/GET_USERDATA_REQUEST',
+  GET_USERSLIST_REQUEST = '@users/GET_USERSLIST_REQUEST',
+  GET_USERSLIST_SUCCESS = '@users/GET_USERSLIST_SUCCESS',
+  GET_USERSLIST_FAILURE = '@users/GET_USERSLIST_FAILURE',
+
+  POST_SIGNUP_REQUEST = '@users/POST_SIGNUP_REQUEST',
+  POST_SIGNUP_SUCCESS = '@users/POST_SIGNUP_SUCCESS',
+  POST_SIGNUP_FAILURE = '@users/POST_SIGNUP_FAILURE',
 }
 
 export interface Users {
@@ -17,7 +21,6 @@ export interface Data {
   name: string,
   email: string,
   role: string,
-  password: string,
   id: string
 }
 
@@ -25,5 +28,8 @@ export interface UserState {
   readonly loading: boolean;
   readonly success: boolean;
   readonly error: boolean;
-  data: string
+  readonly formSubmitted: boolean;
+  data: string;
+  usersList: any;
+  newUserData: any;
 }
