@@ -5,6 +5,6 @@ import products from './products';
 const createRootReducer = () => combineReducers({
   users,
   products
-})
+});
 
-export default createRootReducer
+export default createRootReducer;

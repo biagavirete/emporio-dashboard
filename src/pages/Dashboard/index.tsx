@@ -1,11 +1,12 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as UsersService from '../../store/ducks/users/actions';
 import * as ProductsService from '../../store/ducks/products/actions';
+
 import Sidebar from '../../components/Sidebar';
 import UserInfo from '../../components/UserInfo';
+
 import { MainContainer, SquareDiv } from './styles';
 import EmporioLogo from '../../assets/svgs/LogoEmporio';
 

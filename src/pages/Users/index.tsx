@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { Data } from '../../store/ducks/users/types';
 import * as UsersService from '../../store/ducks/users/actions';
-import { Redirect } from 'react-router';
-import { MainContainer } from '../Dashboard/styles';
+
 import Sidebar from '../../components/Sidebar';
 import UserInfo from '../../components/UserInfo';
-import { IoTrashOutline } from 'react-icons/io5';
 import NewUserForm from '../../components/NewUserForm';
+
+import { MainContainer } from '../Dashboard/styles';
 import { NewUserButton, Table } from './styles';
+import { IoTrashOutline } from 'react-icons/io5';
 
 const Users = () => {
   const [showAddNewUser, setShowAddNewUser] = useState(false);

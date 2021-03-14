@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { IoTrashOutline } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
+import * as ProductsService from '../../store/ducks/products/actions';
+import { Product } from '../../store/ducks/products/types';
+
 import NewProductForm from '../../components/NewProductForm';
 import Sidebar from '../../components/Sidebar';
 import UserInfo from '../../components/UserInfo';
-import * as ProductsService from '../../store/ducks/products/actions';
-import { Product } from '../../store/ducks/products/types';
+
 import { MainContainer } from '../Dashboard/styles';
 import { Table, NewProductButton } from '../Products/styles';
+import { IoTrashOutline } from 'react-icons/io5';
 
 const Products = () => {
   const [showAddNewProduct, setShowAddNewProduct] = useState(false);

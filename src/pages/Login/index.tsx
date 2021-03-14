@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
 import { toast, Toaster } from 'react-hot-toast';
 import { useHistory } from 'react-router-dom';
+
+import { useDispatch, useSelector } from 'react-redux';
 import * as UserActions from '../../store/ducks/users/actions';
+
 import Bee from '../../assets/bee-bg.png';
 import Partner from '../../assets/parceiro-ambev.png';
 import { Container, Form } from './styles';

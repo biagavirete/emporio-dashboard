@@ -27,7 +27,6 @@ export const Container = styled.div`
   }
 
   #top-half {
-    /* margin-top: 2rem; */
     display: flex;
     flex-direction: row;
     justify-content: center;

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Dashboard from './pages/Dashboard';
-import Login from './pages/Login';
-import Products from './pages/Products';
-import Users from './pages/Users';
 
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Users from './pages/Users';
+import Products from './pages/Products';
 
 function Routes() {
 
@@ -16,6 +16,6 @@ function Routes() {
       <Route path="/products" exact component={Products} />
     </Switch>
   )
-}
+};
 
 export default Routes;
