@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast, Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,28 +6,24 @@ import * as ProductsService from '../../store/ducks/products/actions';
 import { Form } from './styles';
 
 const NewProductForm = () => {
-  const [submittedData, setSubmittedData] = useState({});
   const { register, handleSubmit, errors, reset } = useForm();
   const dispatch = useDispatch();
 
-  const { submittedForm } = useSelector((state: any) => state.products)
+  const { error } = useSelector((state: any) => state.products);
 
   const onSubmit = async (data: any) => {
-    setSubmittedData(data);
     try {
       dispatch(ProductsService.postProductRequest(data));
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-    reset(data);
-    toast.success('Produto adicionado')
+    reset({});
+    toast.success('Produto adicionado');
   }
 
-  useEffect(() => {
-    if (submittedForm) {
-      reset({ ...submittedData })
-    }
-  }, [submittedForm, submittedData, reset])
+  if (error) {
+    toast.error('Erro ao cadastrar');
+  }
 
   return (
     <Form>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast, Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,29 +6,25 @@ import * as UsersService from '../../store/ducks/users/actions';
 import { Form } from './styles';
 
 const NewUserForm = () => {
-  const [submittedData, setSubmittedData] = useState({});
   const { register, handleSubmit, errors, reset } = useForm();
   const dispatch = useDispatch();
 
-  const { formSubmitted } = useSelector((state: any) => state.users)
+  const { error } = useSelector((state: any) => state.users)
 
   const onSubmit = async (data: any) => {
-    console.log(data)
-    setSubmittedData(data);
     try {
       dispatch(UsersService.signUpRequest(data));
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-    reset(data);
+    reset({});
     toast.success('Cadastro realizado')
   }
 
-  useEffect(() => {
-    if (formSubmitted) {
-      reset({ ...submittedData })
-    }
-  }, [formSubmitted, submittedData, reset])
+  if (error) {
+    toast.error('Erro ao cadastrar usuário!')
+  }
+
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
