@@ -13,6 +13,10 @@ export const Aside = styled.aside`
   border-radius: 2rem 0 0 2rem;
   color: #ffffff;
 
+  .selected {
+    background: #ffffff;
+  }
+
   .logo-links {
     margin-bottom: 2rem;
   
@@ -54,9 +58,11 @@ export const Aside = styled.aside`
         border-radius: 2rem;
         width: calc(100% - 2rem);
         height: 3rem;
+        margin-bottom: 0.5rem;
 
         svg {
           margin-right: 0.5rem;
+          font-size: 1.2rem;
         }
 
         strong {
