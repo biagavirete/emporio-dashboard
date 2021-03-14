@@ -15,7 +15,6 @@ export const Form = styled.form`
       border: 1px solid var(--light-grey);
       border-radius: 0.8rem;
       background-color: #ffffff;
-      font-size: 1rem;
   }
 
   input[type=radio] {
