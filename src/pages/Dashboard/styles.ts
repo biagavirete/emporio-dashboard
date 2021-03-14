@@ -69,14 +69,17 @@ export const MainContainer = styled.div`
     .content-area {
 
     .data-area {
+      display: flex;
+      justify-content: center;
 
       .data {
         margin-top: 2rem;
         display: flex;
-        flex-direction: column; 
+        flex-direction: row; 
+        justify-content: center;
 
         > div {
-          margin-bottom: 2rem;
+          margin-right: 0.3rem;
         }
       }
     }

@@ -108,6 +108,10 @@ export const Aside = styled.aside`
     }
   }
   @media(max-width: 1258px) {
+    .selected {
+    background: transparent;
+    }
+
     .logo {
     display: flex;
     flex-direction: row;
@@ -154,14 +158,6 @@ export const Aside = styled.aside`
 
       svg {
         font-size: 2rem;
-      }
-
-      :hover {
-        background: #ffffff;
-      }
-
-      .selected {
-        background: #ffffff;
       }
     }
   }
