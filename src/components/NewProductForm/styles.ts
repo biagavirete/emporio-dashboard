@@ -20,7 +20,7 @@ export const Form = styled.form`
       height: 2rem;
       width: 12rem;
       margin-top: 1rem;
-      background: var(--bright-yellow);
+      background: var(--yellow);
       border-radius: 0.8rem;
       color: #000000;
       font-size: 1rem;
@@ -29,7 +29,7 @@ export const Form = styled.form`
 
       :hover {
         cursor: pointer;
-        background: #FEFF65;
+        background: #FFD79A;
         box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.1);
       }
     }

@@ -1,8 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast, Toaster } from 'react-hot-toast';
+
 import { useDispatch, useSelector } from 'react-redux';
 import * as UsersService from '../../store/ducks/users/actions';
+
 import { Form } from './styles';
 
 const NewUserForm = () => {
@@ -74,7 +76,7 @@ const NewUserForm = () => {
             type="radio"
             name="role"
             value="admin"
-            ref={register({ required: true })} />
+            ref={register({ required: 'Campo obrigatório' })} />
         Administrador
     </label>
 
@@ -83,10 +85,14 @@ const NewUserForm = () => {
             type="radio"
             name="role"
             value="editor"
-            ref={register({ required: true })} />
+            ref={register({ required: 'Campo obrigatório' })} />
         Editor
     </label>
       </div>
+      {errors.role && <p
+        role="alert"
+        data-testid="password-error">{errors.role.message}</p>
+      }
       <button type="submit">Cadastrar</button>
       <Toaster />
     </Form>
