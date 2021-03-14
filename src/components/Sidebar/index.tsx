@@ -1,6 +1,11 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import { IoPersonSharp, IoBeerSharp, IoLogOutSharp, IoHome } from 'react-icons/io5'
+import {
+  IoPersonSharp,
+  IoBeerSharp,
+  IoLogOutSharp,
+  IoHome
+} from 'react-icons/io5'
 import { Aside } from './styles';
 import Bee from '../../assets/b-logo.png';
 import { useSelector } from 'react-redux';
