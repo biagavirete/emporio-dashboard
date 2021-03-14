@@ -112,6 +112,17 @@ export const Aside = styled.aside`
     background: transparent;
     }
 
+    .links {
+      a {
+        width: auto;
+
+        :hover {
+          cursor: pointer;
+          background: transparent;
+        }
+      }
+    }
+
     .logo {
     display: flex;
     flex-direction: row;
@@ -147,9 +158,6 @@ export const Aside = styled.aside`
       align-content: center;
       justify-content: center;
       justify-items: center;
-      height: 4rem;
-      width: 4rem;
-      border-radius: 50%;
       padding: 0;
       
       strong {
@@ -158,6 +166,11 @@ export const Aside = styled.aside`
 
       svg {
         font-size: 2rem;
+      }
+
+      :hover {
+        cursor: pointer;
+        background: transparent;
       }
     }
   }

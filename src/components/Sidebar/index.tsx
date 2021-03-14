@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import {
   IoPersonSharp,
   IoBeerSharp,
@@ -8,7 +10,6 @@ import {
 } from 'react-icons/io5'
 import { Aside } from './styles';
 import Bee from '../../assets/b-logo.png';
-import { useSelector } from 'react-redux';
 
 const Sidebar = () => {
   const history = useHistory();
@@ -29,6 +30,7 @@ const Sidebar = () => {
               <img src={Bee} alt="Bee" />
               <strong>Área Administrativa</strong>
             </div>
+
             <div className="links">
               <NavLink to="/dashboard" activeClassName="selected">
                 <i><IoHome /></i>
@@ -44,6 +46,7 @@ const Sidebar = () => {
               </NavLink>
             </div>
           </div>
+
           <div className="logout">
             <button onClick={logout}>
               <IoLogOutSharp />
@@ -56,8 +59,9 @@ const Sidebar = () => {
           <div className="logo-links">
             <div className="logo">
               <img src={Bee} alt="Bee" />
-              <h2>BEES - Área Administrativa</h2>
+              <strong>Área Administrativa</strong>
             </div>
+
             <div className="links">
               <NavLink to="/dashboard" activeClassName="selected">
                 <i><IoHome /></i>
@@ -69,8 +73,12 @@ const Sidebar = () => {
               </NavLink>
             </div>
           </div>
+
           <div className="logout">
-            <button onClick={logout}><IoLogOutSharp /> Logout</button>
+            <button onClick={logout}>
+              <IoLogOutSharp />
+              <strong>Logout</strong>
+            </button>
           </div>
         </>
       )}
