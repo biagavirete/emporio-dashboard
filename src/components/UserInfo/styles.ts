@@ -10,10 +10,10 @@ export const UserInformation = styled.div`
   border-left: 2px solid #F8F8FA;
 
   img {
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     border-radius: 50%;
-    border: 2px solid #000000;
+    border: 0.2rem solid #000000;
     margin: 2rem 0 2rem 0;
   }
 

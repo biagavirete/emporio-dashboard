@@ -1,9 +1,10 @@
 import React from 'react';
-import { Badge, UserInformation } from './styles';
-import AdminAvatar from '../../assets/admin.png';
-import EditorAvatar from '../../assets/user.png';
 import { useSelector } from 'react-redux';
 
+import Bee from '../../assets/bee-standing.png';
+import FlyingBee from '../../assets/bee-flying.png';
+
+import { Badge, UserInformation } from './styles';
 
 const UserInfo = () => {
 
@@ -12,9 +13,9 @@ const UserInfo = () => {
   return (
     <UserInformation>
       { role === 'admin' ? (
-        <img src={AdminAvatar} alt="Avatar" />
+        <img src={Bee} alt="Avatar" />
       ) : (
-        <img src={EditorAvatar} alt="Avatar" />
+        <img src={FlyingBee} alt="Avatar" />
       )}
       <h2>{name}</h2>
       <p>{email}</p>
