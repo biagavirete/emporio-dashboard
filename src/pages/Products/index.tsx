@@ -46,18 +46,7 @@ const Products = () => {
       <Sidebar />
       <div className="content-area">
         <h1>Produtos disponíveis</h1>
-        <div className="new-product">
-          <NewProductButton onClick={toggleAddNewProduct}>
-            Adicionar novo produto
-            </NewProductButton>
-          {showAddNewProduct && (
-            <>
-              <h3>Novo produto</h3>
-              <NewProductForm />
-            </>
-          )
-          }
-        </div>
+
         <div className="table">
           {role === 'admin' ? (
             <>
@@ -106,7 +95,18 @@ const Products = () => {
             </>
           )}
         </div>
-
+        <div className="new-product">
+          <NewProductButton onClick={toggleAddNewProduct}>
+            Adicionar novo produto
+            </NewProductButton>
+          {showAddNewProduct && (
+            <>
+              <h3>Novo produto</h3>
+              <NewProductForm />
+            </>
+          )
+          }
+        </div>
       </div>
       <UserInfo />
     </MainContainer>
