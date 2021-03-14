@@ -14,7 +14,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { formSubmitted } = useSelector((state: any) => state.users)
+  const { formSubmitted, error } = useSelector((state: any) => state.users)
 
   useEffect(() => {
     if (formSubmitted) {
@@ -22,6 +22,10 @@ const Login = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formSubmitted]);
+
+  if (error) {
+    toast.error('Não foi possível realizar o login!');
+  }
 
   const onSubmit = async (data: any) => {
     try {

@@ -39,7 +39,7 @@ const Users = () => {
   useEffect(() => {
     dispatch(UsersService.loadUsersRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formSubmitted])
+  }, [formSubmitted, usersList])
 
   return (
     <MainContainer>
