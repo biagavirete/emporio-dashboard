@@ -27,13 +27,14 @@ const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
       return { ...state, loading: false, error: true }
 
     case UserTypes.POST_SIGNUP_REQUEST:
-      return { ...state, loading: true, error: false }
+      return { ...state, loading: true }
     case UserTypes.POST_SIGNUP_SUCCESS:
       return {
         ...state,
         loading: false,
         success: true,
         error: false,
+        formSubmitted: true,
         newUserData: action.payload
       }
     case UserTypes.POST_SIGNUP_FAILURE:
