@@ -56,12 +56,15 @@ export const Table = styled.table`
     font-size: 1.2rem;
     font-family: 'Open Sans Condensed', sans-serif;
     text-align: left;
-    
 }
 
   tbody {
     tr {
       border-bottom: 1px solid #dddddd;
+
+      :hover {
+        background-color: var(--light-grey);
+      }
 
       td {
         padding: 1rem 1rem;
@@ -71,6 +74,8 @@ export const Table = styled.table`
           
           :hover {
             cursor: pointer;
+            background: transparent;
+            color: var(--orange);
           }
         }
       }

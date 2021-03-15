@@ -23,6 +23,10 @@ export const Table = styled.table`
     tr {
       border-bottom: 1px solid #dddddd;
 
+      :hover {
+        background-color: var(--light-grey);
+      }
+
       td {
         padding: 1rem 1rem;
 
@@ -31,6 +35,8 @@ export const Table = styled.table`
           
           :hover {
             cursor: pointer;
+            background: transparent;
+            color: var(--orange);
           }
         }
       }
