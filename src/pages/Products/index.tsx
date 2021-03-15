@@ -66,7 +66,7 @@ const Products = () => {
                     <tbody>
                       {products !== undefined && products.map((row: Product) => (
                         <>
-                          <tr>
+                          <tr key={row.id}>
                             <td>{row.title}</td>
                             <td>{row.price}</td>
                             <td><button onClick={() => deleteProduct(row.id)}>

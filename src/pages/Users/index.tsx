@@ -66,10 +66,14 @@ const Users = () => {
                     <tbody>
                       {usersList !== undefined && usersList.map((item: Data) => (
                         <>
-                          <tr>
+                          <tr key={item.id}>
                             <td>{item.name}</td>
                             <td>{item.role}</td>
-                            <td><button onClick={() => deleteUser(item.id)}><IoTrashOutline size={20} /></button></td>
+                            <td>
+                              <button onClick={() => deleteUser(item.id)}>
+                                <IoTrashOutline size={20} />
+                              </button>
+                            </td>
                           </tr>
                         </>
                       ))}
@@ -77,7 +81,9 @@ const Users = () => {
                   </Table>
                 </div>
                 <div className="new-user">
-                  <NewUserButton onClick={toggleAddNewUser}>Adicionar novo usuário</NewUserButton>
+                  <NewUserButton onClick={toggleAddNewUser}>
+                    Adicionar novo usuário
+                  </NewUserButton>
 
                   {showAddNewUser && (
                     <>
