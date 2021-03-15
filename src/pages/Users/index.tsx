@@ -3,7 +3,7 @@ import { Redirect } from 'react-router';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Data } from '../../store/ducks/users/types';
-import * as UsersService from '../../store/ducks/users/actions';
+import * as UserActions from '../../store/ducks/users/actions';
 
 import Sidebar from '../../components/Sidebar';
 import UserInfo from '../../components/UserInfo';
@@ -20,7 +20,7 @@ const Users = () => {
   const { role } = useSelector((state: any) => state.users.data)
 
   useEffect(() => {
-    dispatch(UsersService.loadUsersRequest());
+    dispatch(UserActions.loadUsersRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -32,15 +32,15 @@ const Users = () => {
 
   const deleteUser = (id: any) => {
     try {
-      dispatch(UsersService.deleteUserRequest(id))
+      dispatch(UserActions.deleteUserRequest(id))
     } catch (e) {
       console.log(e)
     }
-    dispatch(UsersService.loadUsersRequest())
+    dispatch(UserActions.loadUsersRequest())
   }
 
   useEffect(() => {
-    dispatch(UsersService.loadUsersRequest());
+    dispatch(UserActions.loadUsersRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formSubmitted, usersList])
 

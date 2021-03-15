@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast, Toaster } from 'react-hot-toast';
 
 import { useDispatch, useSelector } from 'react-redux';
-import * as UsersService from '../../store/ducks/users/actions';
+import * as UsersActions from '../../store/ducks/users/actions';
 
 import { Form } from './styles';
 
@@ -15,7 +15,7 @@ const NewUserForm = () => {
 
   const onSubmit = async (data: any) => {
     try {
-      dispatch(UsersService.signUpRequest(data));
+      dispatch(UsersActions.signUpRequest(data));
     } catch (e) {
       console.log(e);
     }

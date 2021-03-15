@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as ProductsService from '../../store/ducks/products/actions';
+import * as ProductsActions from '../../store/ducks/products/actions';
 import { Product } from '../../store/ducks/products/types';
 
 import NewProductForm from '../../components/NewProductForm';
@@ -23,7 +23,7 @@ const Products = () => {
   }
 
   useEffect(() => {
-    dispatch(ProductsService.getProductsRequest());
+    dispatch(ProductsActions.getProductsRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -31,15 +31,15 @@ const Products = () => {
 
   const deleteProduct = (id: any) => {
     try {
-      dispatch(ProductsService.deleteProductRequest(id))
+      dispatch(ProductsActions.deleteProductRequest(id))
     } catch (e) {
       console.log(e)
     }
-    dispatch(ProductsService.getProductsRequest())
+    dispatch(ProductsActions.getProductsRequest())
   }
 
   useEffect(() => {
-    dispatch(ProductsService.getProductsRequest());
+    dispatch(ProductsActions.getProductsRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [submittedForm])
 

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import * as UsersService from '../../store/ducks/users/actions';
-import * as ProductsService from '../../store/ducks/products/actions';
+import * as UsersActions from '../../store/ducks/users/actions';
+import * as ProductsActions from '../../store/ducks/products/actions';
 
 import Sidebar from '../../components/Sidebar';
 import UserInfo from '../../components/UserInfo';
@@ -17,12 +17,12 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(UsersService.loadUsersRequest());
+    dispatch(UsersActions.loadUsersRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
-    dispatch(ProductsService.getProductsRequest());
+    dispatch(ProductsActions.getProductsRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast, Toaster } from 'react-hot-toast';
 
 import { useDispatch, useSelector } from 'react-redux';
-import * as ProductsService from '../../store/ducks/products/actions';
+import * as ProductsActions from '../../store/ducks/products/actions';
 
 import { Form } from './styles';
 
@@ -15,7 +15,7 @@ const NewProductForm = () => {
 
   const onSubmit = async (data: any) => {
     try {
-      dispatch(ProductsService.postProductRequest(data));
+      dispatch(ProductsActions.postProductRequest(data));
     } catch (e) {
       console.log(e);
     }
