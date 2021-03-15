@@ -1,12 +1,15 @@
 # Empório da Cerveja Dashboard
 
 React project using TypeScript, Redux, Redux-Saga and Styled-Components, developed during Campinas Tech Talents bootcamp.
+<br />
 The application allows users to login, access dashboard and get different information according to their role (admin or editor).
+<br />
 Admin users are allowed to access "Usuários" page, add and delete users, while editor users are not. Admin users can add and delete products, but editor users can only add products. 
-
+<br /> <br />
 This application consumes a fake API (<a href="https://github.com/biagavirete/fake-api-emporio">fake-api-emporio</a>).
+<br />
 
-<p align="center"><img src="https://github.com/biagavirete/emporio-dashboard/blob/master/src/assets/gif-emporio-dashboard.gif" width="50%"></p>
+<p align="center"><img src="https://github.com/biagavirete/emporio-dashboard/blob/master/src/assets/gif-emporio-dashboard.gif" width="75%"></p>
 
 ## Getting started
 
