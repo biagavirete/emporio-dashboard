@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 import * as ProductsActions from '../../store/ducks/products/actions';
 import { Product } from '../../store/ducks/products/types';
@@ -15,7 +17,7 @@ const Products = () => {
   const [showAddNewProduct, setShowAddNewProduct] = useState(false);
 
   const dispatch = useDispatch();
-
+  const token = localStorage.getItem("token")
   const { role } = useSelector((state: any) => state.users.data)
 
   const toggleAddNewProduct = () => {
@@ -44,74 +46,78 @@ const Products = () => {
   }, [submittedForm])
 
   return (
-    <MainContainer>
-      <Sidebar />
-      <div className="content-area">
-        <h1>Produtos disponíveis</h1>
+    <>
+      { token ? (
+        <MainContainer>
+          <Sidebar />
+          <div className="content-area">
+            <h1>Produtos disponíveis</h1>
 
-        <div className="table">
-          {role === 'admin' ? (
-            <>
-              <Table>
-                <thead>
-                  <tr>
-                    <th>Item</th>
-                    <th>Preço</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {products !== undefined && products.map((row: Product) => (
-                    <>
+            <div className="table">
+              {role === 'admin' ? (
+                <>
+                  <Table>
+                    <thead>
                       <tr>
-                        <td>{row.title}</td>
-                        <td>{row.price}</td>
-                        <td><button onClick={() => deleteProduct(row.id)}>
-                          <IoTrashOutline size={20} />
-                        </button></td>
+                        <th>Item</th>
+                        <th>Preço</th>
                       </tr>
-                    </>
-                  ))}
-                </tbody>
-              </Table>
-            </>
-          ) : (
-            <>
-              <Table>
-                <thead>
-                  <tr>
-                    <th>Item</th>
-                    <th>Preço</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {products !== undefined && products.map((row: Product) => (
-                    <>
+                    </thead>
+                    <tbody>
+                      {products !== undefined && products.map((row: Product) => (
+                        <>
+                          <tr>
+                            <td>{row.title}</td>
+                            <td>{row.price}</td>
+                            <td><button onClick={() => deleteProduct(row.id)}>
+                              <IoTrashOutline size={20} />
+                            </button></td>
+                          </tr>
+                        </>
+                      ))}
+                    </tbody>
+                  </Table>
+                </>
+              ) : (
+                <>
+                  <Table>
+                    <thead>
                       <tr>
-                        <td>{row.title}</td>
-                        <td>{row.price}</td>
+                        <th>Item</th>
+                        <th>Preço</th>
                       </tr>
-                    </>
-                  ))}
-                </tbody>
-              </Table>
-            </>
-          )}
-        </div>
-        <div className="new-product">
-          <NewProductButton onClick={toggleAddNewProduct}>
-            Adicionar novo produto
+                    </thead>
+                    <tbody>
+                      {products !== undefined && products.map((row: Product) => (
+                        <>
+                          <tr>
+                            <td>{row.title}</td>
+                            <td>{row.price}</td>
+                          </tr>
+                        </>
+                      ))}
+                    </tbody>
+                  </Table>
+                </>
+              )}
+            </div>
+            <div className="new-product">
+              <NewProductButton onClick={toggleAddNewProduct}>
+                Adicionar novo produto
             </NewProductButton>
-          {showAddNewProduct && (
-            <>
-              <h3>Novo produto</h3>
-              <NewProductForm />
-            </>
-          )
-          }
-        </div>
-      </div>
-      <UserInfo />
-    </MainContainer>
+              {showAddNewProduct && (
+                <>
+                  <h3>Novo produto</h3>
+                  <NewProductForm />
+                </>
+              )
+              }
+            </div>
+          </div>
+          <UserInfo />
+        </MainContainer>
+      ) : <Redirect to="/" />}
+    </>
   );
 }
 

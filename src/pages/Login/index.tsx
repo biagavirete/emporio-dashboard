@@ -52,7 +52,7 @@ const Login = () => {
           <Form>
             <input
               type="email"
-              placeholder="E-mail"
+              placeholder="Digite seu e-mail"
               name="email"
               ref={register({
                 required: 'Campo obrigatório',

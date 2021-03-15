@@ -18,6 +18,7 @@ const Users = () => {
   const dispatch = useDispatch();
 
   const { role } = useSelector((state: any) => state.users.data)
+  const token = localStorage.getItem("token")
 
   useEffect(() => {
     dispatch(UserActions.loadUsersRequest());
@@ -45,49 +46,53 @@ const Users = () => {
   }, [formSubmitted, usersList])
 
   return (
-    <MainContainer>
-      <Sidebar />
-      <div className="content-area">
-        {role === 'admin' ? (
-          <>
-            <h1>Usuários</h1>
+    <>
+      { token ? (
+        <MainContainer>
+          <Sidebar />
+          <div className="content-area">
+            {role === 'admin' ? (
+              <>
+                <h1>Usuários</h1>
 
-            <div className="table-users">
-              <Table>
-                <thead>
-                  <tr>
-                    <th>Nome</th>
-                    <th>Permissão</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {usersList !== undefined && usersList.map((item: Data) => (
-                    <>
+                <div className="table-users">
+                  <Table>
+                    <thead>
                       <tr>
-                        <td>{item.name}</td>
-                        <td>{item.role}</td>
-                        <td><button onClick={() => deleteUser(item.id)}><IoTrashOutline size={20} /></button></td>
+                        <th>Nome</th>
+                        <th>Permissão</th>
                       </tr>
-                    </>
-                  ))}
-                </tbody>
-              </Table>
-            </div>
-            <div className="new-user">
-              <NewUserButton onClick={toggleAddNewUser}>Adicionar novo usuário</NewUserButton>
+                    </thead>
+                    <tbody>
+                      {usersList !== undefined && usersList.map((item: Data) => (
+                        <>
+                          <tr>
+                            <td>{item.name}</td>
+                            <td>{item.role}</td>
+                            <td><button onClick={() => deleteUser(item.id)}><IoTrashOutline size={20} /></button></td>
+                          </tr>
+                        </>
+                      ))}
+                    </tbody>
+                  </Table>
+                </div>
+                <div className="new-user">
+                  <NewUserButton onClick={toggleAddNewUser}>Adicionar novo usuário</NewUserButton>
 
-              {showAddNewUser && (
-                <>
-                  <h3>Novo usuário</h3>
-                  <NewUserForm />
-                </>
-              )}
-            </div>
-          </>
-        ) : <Redirect to="/" />}
-      </div>
-      <UserInfo />
-    </MainContainer>
+                  {showAddNewUser && (
+                    <>
+                      <h3>Novo usuário</h3>
+                      <NewUserForm />
+                    </>
+                  )}
+                </div>
+              </>
+            ) : <Redirect to="/" />}
+          </div>
+          <UserInfo />
+        </MainContainer>
+      ) : <Redirect to="/" />}
+    </>
   );
 }
 
