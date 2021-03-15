@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import {
@@ -12,13 +12,14 @@ import { Aside } from './styles';
 import Bee from '../../assets/b-logo.png';
 
 const Sidebar = () => {
-  const history = useHistory();
+  const [loggedOut, setLoggedOut] = useState(false);
 
   const { role } = useSelector((state: any) => state.users.data)
 
   const logout = () => {
     localStorage.removeItem('token');
-    history.push('/');
+    setLoggedOut(true);
+    window.location.reload();
   }
 
   return (
@@ -82,6 +83,7 @@ const Sidebar = () => {
           </div>
         </>
       )}
+      { loggedOut && <Redirect to="/" />}
     </Aside>
   );
 }
