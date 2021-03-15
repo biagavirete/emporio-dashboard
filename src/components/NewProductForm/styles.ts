@@ -12,7 +12,7 @@ export const Form = styled.form`
       height: 3rem;
       width: 20rem;
       padding: 0 1rem;
-      border: 1px solid var(--light-grey);
+      border: 1px solid var(--dark-grey);
       border-radius: 0.8rem;
     }
 
