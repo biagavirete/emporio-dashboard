@@ -13,7 +13,7 @@ This application consumes a fake API (<a href="https://github.com/biagavirete/fa
 
 <br />
 
-<p align="center">:sparkles: **Bonus: while running the fake API you can see the products in the <a href="https://github.com/biagavirete/emporio_ecommerce">Empório da Cerveja</a> application, a beer ecommerce project built with React** :sparkles: </p>
+:sparkles: **Bonus: while running the fake API you can see the products in the <a href="https://github.com/biagavirete/emporio_ecommerce">Empório da Cerveja</a> application, a beer ecommerce project built with React** :sparkles: 
 
 ## Getting started
 
