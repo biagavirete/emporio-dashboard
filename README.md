@@ -6,6 +6,8 @@ Admin users are allowed to access "Usuários" page, add and delete users, while 
 
 This application consumes a fake API (<a href="https://github.com/biagavirete/fake-api-emporio">fake-api-emporio</a>).
 
+<p align="center"><img src="https://github.com/biagavirete/emporio-dashboard/blob/master/src/assets/gif-emporio-dashboard.gif" width="50%"></p>
+
 ## Getting started
 
 **Running fake API**
@@ -50,7 +52,7 @@ $ yarn
 $  yarn start
 ```
 
-> Trying out
+> Try it out!
 
 Login as admin user | Login as editor user
 ------------ | -------------
