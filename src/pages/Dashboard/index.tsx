@@ -7,7 +7,7 @@ import * as ProductsActions from '../../store/ducks/products/actions';
 import Sidebar from '../../components/Sidebar';
 import UserInfo from '../../components/UserInfo';
 
-import { MainContainer, SquareDiv } from './styles';
+import { SquareDiv } from './styles';
 import EmporioLogo from '../../assets/svgs/LogoEmporio';
 
 const Dashboard = () => {
@@ -34,27 +34,25 @@ const Dashboard = () => {
     <>
       { token ? (
         <>
-          <MainContainer>
-            <Sidebar />
-            <div className="content-area">
-              <h1>Bem-vindo(a), {name}!</h1>
-              <p>Confira abaixo os dados referentes ao site:</p>
-              <div className="data-area">
-                <EmporioLogo />
-                <div className="data">
-                  <SquareDiv>
-                    <p>{usersList.length}</p>
-                    <strong>usuários cadastrados</strong>
-                  </SquareDiv>
-                  <SquareDiv>
-                    <p>{products.length}</p>
-                    <strong>produtos cadastrados</strong>
-                  </SquareDiv>
-                </div>
+          <Sidebar />
+          <div className="content-area">
+            <h1>Bem-vindo(a), {name}!</h1>
+            <p>Confira abaixo os dados referentes ao site:</p>
+            <div className="data-area">
+              <EmporioLogo />
+              <div className="data">
+                <SquareDiv>
+                  <p>{usersList.length}</p>
+                  <strong>usuários cadastrados</strong>
+                </SquareDiv>
+                <SquareDiv>
+                  <p>{products.length}</p>
+                  <strong>produtos cadastrados</strong>
+                </SquareDiv>
               </div>
             </div>
-            <UserInfo />
-          </MainContainer>
+          </div>
+          <UserInfo />
         </>
       ) : <Redirect to="/" />}
     </>

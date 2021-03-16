@@ -9,7 +9,6 @@ import NewProductForm from '../../components/NewProductForm';
 import Sidebar from '../../components/Sidebar';
 import UserInfo from '../../components/UserInfo';
 
-import { MainContainer } from '../Dashboard/styles';
 import { Table, NewProductButton } from '../Products/styles';
 import { IoTrashOutline } from 'react-icons/io5';
 
@@ -48,7 +47,7 @@ const Products = () => {
   return (
     <>
       { token ? (
-        <MainContainer>
+        <>
           <Sidebar />
           <div className="content-area">
             <h1>Produtos disponíveis</h1>
@@ -115,7 +114,7 @@ const Products = () => {
             </div>
           </div>
           <UserInfo />
-        </MainContainer>
+        </>
       ) : <Redirect to="/" />}
     </>
   );

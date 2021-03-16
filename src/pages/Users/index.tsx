@@ -9,7 +9,6 @@ import Sidebar from '../../components/Sidebar';
 import UserInfo from '../../components/UserInfo';
 import NewUserForm from '../../components/NewUserForm';
 
-import { MainContainer } from '../Dashboard/styles';
 import { NewUserButton, Table } from './styles';
 import { IoTrashOutline } from 'react-icons/io5';
 
@@ -48,7 +47,7 @@ const Users = () => {
   return (
     <>
       { token ? (
-        <MainContainer>
+        <>
           <Sidebar />
           <div className="content-area">
             {role === 'admin' ? (
@@ -96,7 +95,7 @@ const Users = () => {
             ) : <Redirect to="/" />}
           </div>
           <UserInfo />
-        </MainContainer>
+        </>
       ) : <Redirect to="/" />}
     </>
   );
