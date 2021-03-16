@@ -6,7 +6,8 @@ The application allows users to login, access dashboard and get different inform
 <br />
 Admin users are allowed to access "Usuários" page, add and delete users, while editor users are not. Admin users can add and delete products, but editor users can only add products. 
 <br /> <br />
-This application consumes a fake API (<a href="https://github.com/biagavirete/fake-api-emporio">fake-api-emporio</a>).
+
+This application consumes a fake API. 
 <br />
 
 <p align="center"><img src="https://github.com/biagavirete/emporio-dashboard/blob/master/src/assets/gif-emporio-dashboard.gif" width="75%"></p>
@@ -16,27 +17,6 @@ This application consumes a fake API (<a href="https://github.com/biagavirete/fa
 :sparkles: **Bonus: while running the fake API you can see the products in the <a href="https://github.com/biagavirete/emporio_ecommerce">Empório da Cerveja</a> application, a beer ecommerce project built with React** :sparkles: 
 
 ## Getting started
-
-**Running fake API**
-
-> Cloning fake API repository:
-
-```bash
-$ git clone https://github.com/biagavirete/fake-api-emporio.git
-$ cd fake-api-emporio
-```
-
-> Installing dependencies
-
-```bash
-$ yarn
-```
-
-> Running fake server
-
-```bash
-$ json-server db.json -m ./node_modules/json-server-auth -r routes.json --port 4000
-```
 
 **Installing**
 > Cloning the repository
@@ -58,6 +38,20 @@ $ yarn
 ```bash
 $  yarn start
 ```
+
+> Installing fake API dependencies:
+
+```bash
+$ cd api
+$ yarn
+```
+
+> Running fake server
+
+```bash
+$ json-server db.json -m ./node_modules/json-server-auth -r routes.json --port 4000
+```
+
 
 > Try it out!
 
