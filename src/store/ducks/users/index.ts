@@ -15,6 +15,7 @@ const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case UserTypes.POST_LOGIN_REQUEST:
       return { ...state, loading: true, error: false }
+
     case UserTypes.POST_LOGIN_SUCCESS:
       return {
         ...state,
@@ -23,11 +24,13 @@ const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
         loading: false,
         formSubmitted: true
       }
+
     case UserTypes.POST_LOGIN_FAILURE:
       return { ...state, loading: false, error: true }
 
     case UserTypes.POST_SIGNUP_REQUEST:
       return { ...state, loading: true }
+
     case UserTypes.POST_SIGNUP_SUCCESS:
       return {
         ...state,
@@ -37,23 +40,27 @@ const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
         formSubmitted: true,
         newUserData: action.payload
       }
+
     case UserTypes.POST_SIGNUP_FAILURE:
       return { ...state, loading: false, error: true }
 
     case UserTypes.GET_USERSLIST_REQUEST:
       return { ...state, loading: true }
+
     case UserTypes.GET_USERSLIST_SUCCESS:
       return {
         ...state,
         loading: false,
         usersList: action.payload,
         error: false,
+
       }
     case UserTypes.GET_USERSLIST_FAILURE:
       return { ...state, loading: false, error: true }
 
     case UserTypes.DELETE_USER_REQUEST:
       return { ...state, loading: true }
+
     case UserTypes.DELETE_USER_SUCCESS:
       return {
         ...state,
@@ -61,6 +68,7 @@ const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
         success: true,
         error: false,
       }
+
     case UserTypes.DELETE_USER_FAILURE:
       return { ...state, loading: false, error: true }
 
